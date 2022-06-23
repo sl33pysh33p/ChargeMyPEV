@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #DDBFEE;
+            background-image: linear-gradient(to right, #DDBFEE, white);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+            background-color: white;
+        }
+
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for the submit button */
+        .registerbtn {
+            background-color: #DDBFEE;
+            background-image: linear-gradient(to right, #DDBFEE, white);
+            color: black;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+            .registerbtn:hover {
+                opacity: 1;
+            }
+
+        /* Add a blue text color to links */
+        a {
+            color: dodgerblue;
+        }
+
+        /* Set a grey background color and center the text of the "sign in" section */
+        .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="add_point.php" method="post">
+        <div class="container">
+            <h1>Add A Point</h1>
+            <p>Fill in the form below to add a point or place where there is a charging point where you have previously charged your PEV</p>
+            <hr>
+
+            <label> <for ="Name"> <b>Name Of Point</b></label>
+            <input type="text" placeholder="Enter the name of the power point you wish to add" name="name" id="name" required>
+
+            <label> <for ="Location"> <b>Location Of Point</b></label>
+            <input type="text" placeholder="Enter the Location of the Place Lat,Long prefered but just the name is fine" name="loc" id="loc" required>
+
+            <label> <for ="Date Added"> </for><b>Date The Point was Added</b></label>
+            <input type="text" placeholder="Enter the date of the day you are adding the point" name="date" id="date" required>
+
+            <label> <for ="Details"> <b>Details</b></label>
+            <input type="text" placeholder="Enter any general details about the place which might aid someone trying to locate the point" name="det" id="det" required>
+
+            <label> <for ="Image"> <b>Image</b></label>
+            <input type="text" placeholder="Optional: Add the link to an image of the point. Eg:Imgur,Flickr etc" name="img" id="img">
+
+            <label> <for ="Added By"> <b>Added By</b></label>
+            <input type="text" placeholder="Optional: Add your name for credit of the discover of the poing" name="addby" id="addby">
+
+            <hr>
+
+            <p>Thank you for your input!</p>
+
+            <button type="submit" class="registerbtn">Submit</button>
+        </div>
+
+        <div class="container signin">
+            <p>WHAT! I submitted a point but it isnt displayed on the map! <a href="what.html">How could you let this happen!</a>.</p>
+        </div>
+    </form>
+
+</body>
+</html>

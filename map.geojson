@@ -1,0 +1,60 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [ 144.968293, -37.817769 ],
+        "type": "Point"
+      },
+      "properties": {
+        "marker-color": "#e4de25",
+        "marker-size": "medium",
+        "marker-symbol": "triangle",
+        "name": "Fed Sqaure Ad/Information Terminal",
+        "details": "Charge point located under kiosk. There are 2 powerpoints."
+      },
+      "type": "Feature"
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 144.926885, -37.841184 ]
+      },
+      "properties": {
+        "marker-color": "#e4de25",
+        "marker-size": "medium",
+        "marker-symbol": "triangle",
+        "name": "Princess Pier Power Point ",
+        "details": "Powerpoint is located inside the toilets. Recomend running an extension cord so you dont have to sit in the toilets to watch your PEV"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 144.93264305063042, -37.8407570692888 ]
+      },
+      "properties": {
+        "marker-color": "#e4de25",
+        "marker-size": "medium",
+        "marker-symbol": "triangle",
+        "name": "Power oposite the tram",
+        "details": "Directly opposite the tram there is a single powerpoint. There is one of the same just arround the oter side of the building as well. Also great thing to do get some fish and chips from D'lish fish they are good as and its nice to eat somthing while your PEV charges"
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 145.00475433509982, -37.833862803644564 ]
+      },
+      "properties": {
+        "marker-color": "#e4de25",
+        "marker-size": "medium",
+        "marker-symbol": "triangle",
+        "name": "Kanteen Public Power Point",
+        "details": "As you aproach Kanteen you should see a large tree and behind that tree is a powerpoint."
+      },
+      "type": "Feature"
+    }
+  ],
+}

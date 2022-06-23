@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+
+    <meta charset="utf-8" />
+
+
+    <title>ChargeMyPEV</title>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <nav>
+        <div class="logo">
+            <a style="color: white;" href="index.html">ChargeMyPEV<sup>V1.2</sup></a>
+
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a style="color: white;" href="add.html">Add A Point</a>
+            </li>
+            <li>
+                <a style="color: white;" href="about.html">About</a>
+            </li>
+            <li>
+                <a style="color: white;" href="changelog.html">ChangeLog</a>
+            </li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <div id="map"></div>
+
+    <script src="app.js"></script>
+
+    <script>
+        mapboxgl.accessToken = 'INSERT MAPBOX TOKEN HERE';
+        var map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v11', // style URL
+            zoom: 10, // starting zoom
+            center: [144.97442638919176, -37.78177360539262],    // starting 
+
+        });
+
+
+
+
+
+        map.addControl(
+            new mapboxgl.GeolocateControl({
+                positionOptions: {
+                    enableHighAccuracy: true
+                },
+                trackUserLocation: true
+            })
+        );
+
+        map.on('load', function () {
+
+            map.loadImage(
+                'icon-1.png',
+                function (error, image) {
+                    if (error) throw error;
+
+                    // Add the image to the map style.
+                    map.addImage('pointico', image);
+
+                    // Add a data source containing one point feature.
+                    map.addSource('point', {
+                        'type': 'geojson',
+                        'data': 'https://raw.githubusercontent.com/sl33pysh33p/chargemap.github.io/main/map%20(1).geojson',
+                    });
+
+                    // Add a layer to use the image to represent the data.
+                    map.addLayer({
+                        'id': 'points',
+                        'type': 'symbol',
+                        'source': 'point', // reference the data source
+                        'layout': {
+                            'icon-image': 'pointico', // reference the image
+                            'icon-size': 0.4
+                        }
+                    });
+                }
+            );
+
+        });
+
+
+        map.on('click', 'points', function (e) {
+            var coordinates = e.features[0].geometry.coordinates.slice();
+            var description = e.features[0].properties.description;
+
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+
+            new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+        });
+
+        // Change the cursor to a pointer when the mouse is over the places layer.
+        map.on('mouseenter', 'points', function () {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'points', function () {
+            map.getCanvas().style.cursor = '';
+        });
+
+
+
+
+
+
+    </script>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

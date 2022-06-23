@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+    <title>ChargeMap</title>
+    <style type="text/css">
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+    <meta charset="utf-8">
+    <title>Display map navigation controls</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+   
+    
+    <div id='map' style='width: 1900px; height: 950px;'></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic2xlZXB5c2hlZXAiLCJhIjoiY2twbWF3enQ2NDJ2aDMxbnhjMzZvcjJvMCJ9.LvRRwcBT6LRrup222EpsMQ';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11'
+        });
+    </script>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic2xlZXB5c2hlZXAiLCJhIjoiY2twbWF3enQ2NDJ2aDMxbnhjMzZvcjJvMCJ9.LvRRwcBT6LRrup222EpsMQ';
+        var map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/streets-v11', // style URL
+            zoom: 7, // starting zoom
+            center: [138.043, 35.201] // starting center
+        });
+
+        map.on('load', function () {
+            map.addSource('points', {
+                type: 'geojson',
+                // Use a URL for the value for the `data` property.
+                data: 'https://raw.githubusercontent.com/Tomato144848/chargemap/a1b47e59c0380f414eb10c61d65da649d2a0b196/map%20(1).geojson?token=AKQ5FCFRDG73YBVUPC2JAWTAYFMIY'
+
+            map.addLayer({
+                'id': 'earthquakes-layer',
+                'type': 'circle',
+                'source': 'earthquakes',
+                'paint': {
+                    'circle-radius': 8,
+                    'circle-stroke-width': 2,
+                    'circle-color': 'red',
+                    'circle-stroke-color': 'white'
+                }
+            });
+        });
+    </script>
+
+
+</body>
+</html>
