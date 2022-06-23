@@ -1,4 +1,4 @@
-The ChargeMyPEV Project
+#The ChargeMyPEV Project
 
 I started this project in mid 2020 during the pandemic. I didnt pour any serious time into it however until 2022 when I broke my foot and had nothing better to do 
 
